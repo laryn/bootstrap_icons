@@ -1,7 +1,7 @@
 Bootstrap Icons
 ======================
 
-The Bootstrap Icons module loads the [Bootstrap Icons library](https://icons.getbootstrap.com). It can be a useful add-on to the [Bootstrap Lite](https://backdropcms.org/project/bootstrap_lite) or [Bootstrap 5 Lite](https://backdropcms.org/project/bootstrap5_lite) themes, or any other theme where you need some icons.
+The Bootstrap Icons module provides icons from the [Bootstrap Icons library](https://icons.getbootstrap.com). It can be a useful add-on to the [Bootstrap Lite](https://backdropcms.org/project/bootstrap_lite) or [Bootstrap 5 Lite](https://backdropcms.org/project/bootstrap5_lite) themes, or any other theme where you need some icons.
 
 Installation
 ------------
@@ -9,7 +9,7 @@ Installation
 - Install this module using [the official Backdrop CMS instructions]( https://backdropcms.org/guide/modules).
 
 - Visit the configuration page under Administration > Configuration >
-Content Authoring > Boostrap Icons (admin/config/content/bootstrap_icons) where you will find a setting to choose whether to use the CDN or the bundled library.
+Content Authoring > Boostrap Icons (admin/config/content/bootstrap_icons) where you will find a setting to choose whether to use the CDN, the bundled library, or simply to use the Backdrop core icon API without including additional CSS from the Bootstrap library.
 
 Related Modules
 -------------

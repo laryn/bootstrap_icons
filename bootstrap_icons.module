@@ -25,16 +25,16 @@ function bootstrap_icons_menu() {
  */
 function bootstrap_icons_init() {
   $version = config_get('bootstrap_icons.settings', 'version');
-  if (!$version) {
+  if (!$version || $version == 'api') {
     return;
   }
   if ($version == '1.7.2') {
-    // CDN
+    // CDN.
     $data = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@' . $version . '/font/bootstrap-icons.css';
     $type = 'file';
   }
   else {
-    // Local bundled
+    // Local bundled.
     $module_path = backdrop_get_path('module', 'bootstrap_icons');
     $data = '/' . $module_path . '/bootstrap-icons/font/bootstrap-icons.css';
     $type = 'external';
@@ -59,4 +59,37 @@ function bootstrap_icons_config_info() {
     'group' => t('Configuration'),
   );
   return $prefixes;
+}
+
+/**
+ * Implements hook_icon_info().
+ */
+function bootstrap_icons_icon_info() {
+  return _bootstrap_icons_load_icons();
+}
+
+/**
+ * Loads the icons from the Bootstrap Icons library.
+ */
+function _bootstrap_icons_load_icons() {
+  $icons = cache_get('bootstrap_icons_array');
+  if (!empty($icons)) {
+    return $icons->data;
+  }
+
+  $icons = array();
+  $icon_directory = backdrop_get_path('module', 'bootstrap_icons') . '/bootstrap-icons/icons';
+  $icon_list = scandir($icon_directory);
+  foreach ($icon_list as $icon) {
+    if (substr($icon, -4) == '.svg') {
+      $icon_name = substr($icon, 0, -4);
+      $icons['bootstrap-icons-' . $icon_name] = array(
+        'name' => $icon_name,
+        'directory' => $icon_directory,
+      );
+    }
+  }
+
+  cache_set('bootstrap_icons_array', $icons, 'cache', CACHE_PERMANENT);
+  return $icons;
 }

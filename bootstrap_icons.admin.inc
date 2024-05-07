@@ -12,11 +12,16 @@ function bootstrap_icons_settings_form($form, &$form_state) {
   $form['version'] = array(
     '#type' => 'select',
     '#title' => t('Library version'),
-    '#description' => t('Select the library version, either CDN or locally bundled library. See the !documentation for the available icons.', array('!documentation' => l(t('Bootstrap Icons documentation'), 'https://icons.getbootstrap.com', array('external' => TRUE)))),
+    '#description' => t('Select whether (and how) to include the CSS for the library. See the !documentation for the available icons.', array(
+      '!documentation' => l(t('Bootstrap Icons documentation'), 'https://icons.getbootstrap.com', array(
+        'external' => TRUE,
+      ),
+    ))),
     '#default_value' => config_get('bootstrap_icons.settings', 'version'),
     '#options' => array(
       '1.7.2' => t('1.7.2 (CDN)'),
       'bundled' => t('1.7.2 (bundled)'),
+      'api' => t('Use Backdrop\'s core icon API only'),
     ),
   );
 

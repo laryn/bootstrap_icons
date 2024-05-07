@@ -3,5 +3,10 @@ description = Provides the Bootstrap Icons library of over 1500 icons as SVGs, S
 backdrop = 1.x
 type = module
 tags[] = Bootstrap
+tags[] = Media
+tags[] = Icons
+tags[] = User Interface
 
 configure = admin/config/content/bootstrap_icons
+
+dependencies[] = system(>=1.28)
